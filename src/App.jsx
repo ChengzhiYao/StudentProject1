@@ -33,13 +33,17 @@ export default function App() {
     return () => sub.subscription.unsubscribe()
   }, [])
 
+  // never show a full email as the display name
+  const nice = (n) => (n && !String(n).includes('@') ? n : '')
+
   async function loadSignedIn(authUser) {
     const meta = authUser.user_metadata || {}
+    const emailPrefix = (authUser.email || 'rower').split('@')[0]
     const base = {
       id: authUser.id,
       email: authUser.email,
-      username: meta.username || (authUser.email || 'rower').split('@')[0],
-      fullName: meta.full_name || '',
+      username: nice(meta.username) || nice(meta.full_name) || nice(meta.name) || emailPrefix,
+      fullName: meta.full_name || meta.name || '',
     }
     setUser(base)
     setScreen('home')
@@ -50,7 +54,11 @@ export default function App() {
         .eq('id', authUser.id)
         .single()
       if (data) {
-        setUser((p) => ({ ...p, username: data.username || p.username, fullName: data.full_name || p.fullName }))
+        setUser((p) => ({
+          ...p,
+          username: nice(data.username) || p.username,
+          fullName: data.full_name || p.fullName,
+        }))
         if (data.progress) setProgress({ ...EMPTY, ...data.progress })
       }
     } catch (e) { /* table may not exist yet — ignore */ }
@@ -96,7 +104,10 @@ export default function App() {
   function updateUser(patch) {
     setUser((u) => ({ ...u, ...patch }))
     if (supabase && user?.id) {
-      supabase.from('profiles').update({ username: patch.username, full_name: patch.fullName }).eq('id', user.id)
+      supabase
+        .from('profiles')
+        .upsert({ id: user.id, username: patch.username, full_name: patch.fullName ?? null }, { onConflict: 'id' })
+        .then(({ error }) => { if (error) console.warn('profile save failed:', error.message) })
     }
   }
 
@@ -107,7 +118,9 @@ export default function App() {
     setProgress((p) => {
       const done = p[diffId].includes(levelIdx) ? p[diffId] : [...p[diffId], levelIdx]
       const np = { ...p, [diffId]: done }
-      if (supabase && user?.id) supabase.from('profiles').update({ progress: np }).eq('id', user.id)
+      if (supabase && user?.id) {
+        supabase.from('profiles').upsert({ id: user.id, progress: np }, { onConflict: 'id' })
+      }
       return np
     })
     setScreen('difficulty')
