@@ -368,8 +368,22 @@ body {
 .bwo .hoar.left { right: 46%; transform: scaleX(-1); }
 
 /* hover: oars rock back and forth — the feel of rowing */
-.boat-choice:hover .hoar.right { animation: oarRowRight 1.4s ease-in-out infinite; }
-.boat-choice:hover .hoar.left { animation: oarRowLeft 1.4s ease-in-out infinite; }
+/* home boats: gentle, always-on rocking loop (small amplitude, slightly staggered) */
+.boat-choice .hoar.right { animation: oarRockRight 3.2s ease-in-out infinite; }
+.boat-choice .hoar.left { animation: oarRockLeft 3.2s ease-in-out infinite; }
+.boat-choice:nth-child(2) .hoar { animation-delay: -1.1s; }
+.boat-choice:nth-child(3) .hoar { animation-delay: -2.2s; }
+
+@keyframes oarRockRight {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-2.5deg); }
+  75%      { transform: rotate(2.5deg); }
+}
+@keyframes oarRockLeft {
+  0%, 100% { transform: scaleX(-1) rotate(0deg); }
+  25%      { transform: scaleX(-1) rotate(-2.5deg); }
+  75%      { transform: scaleX(-1) rotate(2.5deg); }
+}
 
 @keyframes oarRowRight {
   0%, 100% { transform: rotate(0deg); }
