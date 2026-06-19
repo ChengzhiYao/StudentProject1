@@ -14,7 +14,7 @@ export default function LevelDetail({ diffId, levelIdx, onNext, onBack }) {
   return (
     <div className="level scroll">
       <button className="back-btn" onClick={onBack}>← Back</button>
-      <h1>Level<br />{numWord}</h1>
+      <h1>Level {numWord}</h1>
 
       {v.id ? (
         <div className="video-box embed">
