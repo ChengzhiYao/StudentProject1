@@ -10,7 +10,7 @@ export default function Login({ onLogin, onGoogle, goSignup, error }) {
   }
 
   return (
-    <div className="screen">
+    <div className="screen auth-screen">
       <div className="auth-title">Welcome To<br />NovRow</div>
       <form className="auth-card" onSubmit={submit}>
         <h2>Login here</h2>

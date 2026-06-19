@@ -10,7 +10,7 @@ export default function Signup({ onSignup, onCancel, error }) {
   }
 
   return (
-    <div className="screen">
+    <div className="screen auth-screen">
       <div className="auth-title">Welcome to<br />NovRow</div>
       <form className="auth-card" onSubmit={submit}>
         <h2>Signup here</h2>
