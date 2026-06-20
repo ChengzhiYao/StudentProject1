@@ -31,11 +31,11 @@ export default function InstallPrompt() {
   return (
     <div className="install-banner">
       {ios ? (
-        <span>📲 全屏使用：点底部 <b>分享 ⬆️</b> → <b>添加到主屏幕</b></span>
+        <span>📲 To install: tap <b>Share ⬆️</b> → <b>Add to Home Screen</b></span>
       ) : (
         <>
-          <span>📲 添加到主屏幕，全屏使用</span>
-          <button className="install-go" onClick={install}>安装</button>
+          <span>📲 Add NovRow to your home screen</span>
+          <button className="install-go" onClick={install}>Install</button>
         </>
       )}
       <button className="install-x" onClick={() => setShow(false)} aria-label="close">✕</button>
