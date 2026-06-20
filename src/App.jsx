@@ -10,6 +10,7 @@ import LevelDetail from './screens/LevelDetail.jsx'
 import Quiz from './screens/MiniGame.jsx'
 import Profile from './screens/Profile.jsx'
 import TabBar from './screens/TabBar.jsx'
+import InstallPrompt from './screens/InstallPrompt.jsx'
 
 const EMPTY = { novice: [], mediocre: [], advanced: [] }
 
@@ -131,6 +132,7 @@ export default function App() {
 
   return (
     <div className="phone">
+      <InstallPrompt />
       <div className="screen">
         {screen === 'login' && (
           <Login onLogin={handleLogin} onGoogle={handleGoogle} goSignup={() => setScreen('signup')} error={authMsg} />

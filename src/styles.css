@@ -35,6 +35,42 @@ body {
   justify-content: center;
 }
 
+/* ---- install-to-home banner ---- */
+.install-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #0e2a52;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+.install-banner b { color: #fff; }
+.install-go {
+  background: var(--btn);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.install-x {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: #aebbd4;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 /* ---- phone frame ---- */
 .phone {
   width: 100%;
