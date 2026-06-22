@@ -12,7 +12,7 @@ export const LESSONS = {
     {
       title: 'Parts of the Boat & Oar',
       summary:
-        'Before you row, learn the gear. The boat is called a shell. The pointy front is the bow, the back is the stern. You sit on a sliding seat and brace your feet against foot-stretchers. The oar has a handle, a shaft, and a blade (the flat end that catches the water). The point where the oar attaches to the boat is the rigger and gate.',
+        'Before you row, learn the gear. The boat is called a shell. The pointy front is the bow, the back is the stern. Heads up — rowers sit facing backwards, so the bow (the front) is actually behind you as you row, and you move toward it. You sit on a sliding seat and brace your feet against foot-stretchers. The oar has a handle, a shaft, and a blade (the flat end that catches the water). The point where the oar attaches to the boat is the rigger and gate.',
       quiz: [
         {
           q: 'What is the flat end of the oar that catches the water called?',
@@ -604,8 +604,8 @@ export const VIDEOS = {
 // Each difficulty follows the same 8-level pattern, with harder content.
 export const GAMES = {
   novice: [
-    { type: 'connect', prompt: 'Match each boat part to what it is', pairs: [
-      ['Bow', 'Front of the boat'], ['Stern', 'Back of the boat'],
+    { type: 'connect', prompt: 'Match each boat part (rowers face backwards!)', pairs: [
+      ['Bow', 'The front end'], ['Stern', 'The back end'],
       ['Blade', 'Catches the water'], ['Seat', 'Slides as you row'] ] },
     { type: 'spot', prompt: 'Tap the posture MISTAKES', items: [
       { t: 'Sit tall', bad: false }, { t: 'Hunched shoulders', bad: true },
